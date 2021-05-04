@@ -34,7 +34,7 @@
     <link href="assets/css/style.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body onload="checkDark()">
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
       <div class="container d-flex align-items-center">
@@ -51,16 +51,18 @@
         <nav class="nav-menu d-none d-lg-block">
           <!-- <a class="navbar-brand" href=""><img src="/assets/img/favicon/favicon-32x32.png" alt=""></a> -->
           <ul>
+            <div id="blog-check" style="display: none;">Not Empty</div>
             <li class="active"><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#team">Team</a></li>
-            <!-- <li><a href="#pricing">Pricing</a></li> -->
+            <li><a href="./pages/blog/blogsPage.html">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="btn toggle" id="toggle"><a href="#hero"
                 onclick="toggle()"><i
                   class="far fa-moon fa-2x"></i></a></li>
+            
             <li class="get-started"><a href="#about">Get Started</a></li>
 
 
@@ -1407,33 +1409,20 @@
         // document.documentElement.classList.toggle('dark-mode')
         // });
 
-        function toggle() {
-          console.log("Here");
+        function toggle() { 
             if (document.documentElement.classList.contains('dark-mode')) {
                 document.documentElement.classList.remove('dark-mode');
+                localStorage.removeItem("isDark");
             } else {
               document.documentElement.classList.add('dark-mode');
-              
+              localStorage.setItem("isDark", true);
             }
         }
 
-        function basicPlan() {
-         document.getElementById('subject').value = "Basic Plan";
-         document.getElementById('subject').style.color = "purple";
-        }
-
-        function intermediatePlan(){
-          document.getElementById('subject').value = "Intermediate Plan";
-          document.getElementById('subject').style.color = "purple";
-        }
-        function advancedPlan(){
-          document.getElementById('subject').value = "Advanced Plan";
-          document.getElementById('subject').style.color = "purple";
-        }
-
-        function standAlone(){
-          document.getElementById('subject').value = "Please Type in the service";
-          document.getElementById('subject').style.color = "purple";
+        function checkDark() {
+          if(localStorage.getItem("isDark")) {
+            document.documentElement.classList.add('dark-mode');
+          }
         }
 
     </script>
