@@ -1556,7 +1556,6 @@ section {
 
 .article p{
   font-size: 50px; 
-  text-align: justify;
 }
 
 @media (min-width: 1024px) {
